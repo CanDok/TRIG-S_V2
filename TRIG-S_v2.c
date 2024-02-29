@@ -66,7 +66,10 @@ uint8_t S17[] = {"XFS_TRG_GEN_V2"};
 uint8_t S18[] = {"SESAME XAFS Trigger Generator"};
 uint8_t S19[] = {"SN:06BRV114"};
 uint8_t S20[] = {"By:cdokuyucu"};
+uint8_t S06[] = {"Kisses From Ankara!!"};
 uint8_t rx_buff[11];
+int delay=1;
+int stp =0;
 /* USER CODE END 0 */
 
 /**
@@ -136,11 +139,11 @@ int main(void)
 	  	  	 	 	 	 	  	 	   rx_buff[8]='x';
 	  	  	 	 	 	 	  	 }
 	  if((rx_buff[0]=='S')&(rx_buff[1]=='S')&(rx_buff[2]=='M')&(rx_buff[3]=='S')&(rx_buff[4]=='N')&(rx_buff[5]=='D')&(rx_buff[6]=='T')&(rx_buff[7]=='R')&(rx_buff[8]=='G')){
+		  HAL_Delay(delay);
+		  HAL_GPIO_WritePin(STP_GPIO_Port,STP_Pin, GPIO_PIN_SET);
+		  HAL_Delay(stp);
 		  HAL_GPIO_WritePin(STP_GPIO_Port,STP_Pin, GPIO_PIN_RESET);
-		  	  	 		HAL_Delay(10);
-		  	  	 		HAL_GPIO_WritePin(STP_GPIO_Port,STP_Pin, GPIO_PIN_SET);
-		  	  	 		 HAL_Delay(10);
-	 	  	  	 		  HAL_Delay(100);
+
 	 	  	  	 		  HAL_UART_Transmit(&huart1, S1, 7, 1000);
 	 	  	  	 	      HAL_UART_Transmit(&huart1, SB, 2, 1000);
 	 	  	  	 	 	 	 	  	       rx_buff[0]='x';
@@ -153,6 +156,82 @@ int main(void)
 	 	  	  	 	 	 	 	  	 	   rx_buff[7]='x';
 	 	  	  	 	 	 	 	  	 	   rx_buff[8]='x';
 	 	  	  	 	 	 	 	  	 }
+
+
+	  if((rx_buff[0]=='S')&(rx_buff[1]=='E')&(rx_buff[2]=='T')&(rx_buff[3]=='W')&(rx_buff[4]=='D')){
+	 	  		HAL_Delay(100);
+	 	  		HAL_UART_Transmit(&huart1, S3, 9, 1000);
+	 	  		HAL_UART_Transmit(&huart1, SB, 2, 1000);
+	 	  	 	char sayi= rx_buff[5];
+	 	  	 	int ss1 = sayi-'0';
+	 	  	 	ss1=ss1*1000;
+	 	  	 	 sayi= rx_buff[6];
+	 	  	 	int	ss2 = sayi-'0';
+	 	  	 	ss2=ss2*100;
+	 	  	 		 sayi= rx_buff[7];
+	 	  	 		int	ss3 = sayi-'0';
+	 	  	 		ss3=ss3*10;
+	 	  	 			 sayi= rx_buff[8];
+	 	  	 			int	ss4 = sayi-'0';
+	 	  	 			stp =ss1+ss2+ss3+ss4;
+
+	 	  	 		       rx_buff[0]='x';
+	 	  	 			   rx_buff[1]='x';
+	 	  	 			   rx_buff[2]='x';
+	 	  	 			   rx_buff[3]='x';
+	 	  	 			   rx_buff[4]='x';
+	 	  	 			   rx_buff[5]='x';
+	 	  	 			   rx_buff[6]='x';
+	 	  	 			   rx_buff[7]='x';
+	 	  	 			   rx_buff[8]='x';
+	 	  	 }
+
+
+
+	  if((rx_buff[0]=='S')&(rx_buff[1]=='E')&(rx_buff[2]=='T')&(rx_buff[3]=='D')&(rx_buff[4]=='L')){
+	 	  		 HAL_Delay(100);
+	 	  	 	HAL_UART_Transmit(&huart1, S2, 10, 1000);
+	 	  	 	HAL_UART_Transmit(&huart1, SB, 2, 1000);
+
+	 	  	 	char sayi= rx_buff[5];
+	 	  	 	int sd1 = sayi-'0';
+	 	  	 	sd1=sd1*1000;
+	 	  	 	 sayi= rx_buff[6];
+	 	  	 	int	sd2 = sayi-'0';
+	 	  	 	sd2=sd2*100;
+	 	  	 		 sayi= rx_buff[7];
+	 	  	 		int	sd3 = sayi-'0';
+	 	  	 		sd3=sd3*10;
+	 	  	 			 sayi= rx_buff[8];
+	 	  	 			int	sd4 = sayi-'0';
+	 	  	 			delay =sd1+sd2+sd3+sd4;
+
+	 	  	 		       rx_buff[0]='x';
+	 	  	 			   rx_buff[1]='x';
+	 	  	 			   rx_buff[2]='x';
+	 	  	 			   rx_buff[3]='x';
+	 	  	 			   rx_buff[4]='x';
+	 	  	 			   rx_buff[5]='x';
+	 	  	 			   rx_buff[6]='x';
+	 	  	 			   rx_buff[7]='x';
+	 	  	 			   rx_buff[8]='x';
+	 	  	 }
+
+	  if((rx_buff[0]=='A')&(rx_buff[1]=='N')&(rx_buff[2]=='K')&(rx_buff[3]=='A')&(rx_buff[4]=='R')&(rx_buff[5]=='A')&(rx_buff[6]=='K')&(rx_buff[7]=='S')&(rx_buff[8]=='S')){
+	  	  	  	 		  HAL_Delay(100);
+	  	  	  	 		  HAL_UART_Transmit(&huart1, S06, 20, 1000);
+	  	  	  	 		  HAL_UART_Transmit(&huart1, SB, 2, 1000);
+
+	  	  	  	 	 	 	 	  	       rx_buff[0]='x';
+	  	  	  	 	 	 	 	  	 	   rx_buff[1]='x';
+	  	  	  	 	 	 	 	  	 	   rx_buff[2]='x';
+	  	  	  	 	 	 	 	  	 	   rx_buff[3]='x';
+	  	  	  	 	 	 	 	  	 	   rx_buff[4]='x';
+	  	  	  	 	 	 	 	  	 	   rx_buff[5]='x';
+	  	  	  	 	 	 	 	  	 	   rx_buff[6]='x';
+	  	  	  	 	 	 	 	  	 	   rx_buff[7]='x';
+	  	  	  	 	 	 	 	  	 	   rx_buff[8]='x';
+	  	  	  	 	 	 	 	  	 }
 
 
 
