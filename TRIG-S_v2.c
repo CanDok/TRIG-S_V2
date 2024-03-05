@@ -63,7 +63,7 @@ uint8_t S3[] = {"Width SET!"};
 uint8_t S4[] = {"Burst Mode!"};
 uint8_t S5[] = {"Single Mode!"};
 uint8_t S17[] = {"XFS_TRG_GEN_V2"};
-uint8_t S18[] = {"SESAME XAFS Trigger Generator"};
+uint8_t S18[] = {"SESAME XAFS Trigger Generator 2024"};
 uint8_t S19[] = {"SN:06BRV114"};
 uint8_t S20[] = {"By:cdokuyucu"};
 uint8_t S06[] = {"Kisses From Ankara!!"};
@@ -103,9 +103,9 @@ int main(void)
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
   HAL_UART_Receive_IT(&huart1, rx_buff, 11);
-   HAL_UART_Transmit(&huart1, S17, 11, 1000);
+   HAL_UART_Transmit(&huart1, S17, 14, 1000);
    		  HAL_UART_Transmit(&huart1, SB, 2, 1000);
-   		  HAL_UART_Transmit(&huart1, S18, 31, 1000);
+   		  HAL_UART_Transmit(&huart1, S18, 34, 1000);
    		  HAL_UART_Transmit(&huart1, SB, 2, 1000);
    		  HAL_UART_Transmit(&huart1, S19, 11, 1000);
    		  HAL_UART_Transmit(&huart1, SB, 2, 1000);
@@ -120,9 +120,9 @@ int main(void)
     /* USER CODE END WHILE */
 	  if((rx_buff[0]=='C')&(rx_buff[1]=='T')&(rx_buff[2]=='R')&(rx_buff[3]=='I')&(rx_buff[4]=='D')&(rx_buff[5]=='N')&(rx_buff[6]=='/')&(rx_buff[7]=='*')&(rx_buff[8]=='?')){
 	  	  	 		  HAL_Delay(100);
-	  	  	 		  HAL_UART_Transmit(&huart1, S17, 11, 1000);
+	  	  	 		  HAL_UART_Transmit(&huart1, S17, 14, 1000);
 	  	  	 		  HAL_UART_Transmit(&huart1, SB, 2, 1000);
-	  	  	 		  HAL_UART_Transmit(&huart1, S18, 31, 1000);
+	  	  	 		  HAL_UART_Transmit(&huart1, S18, 34, 1000);
 	  	  	 		  HAL_UART_Transmit(&huart1, SB, 2, 1000);
 	  	  	 		  HAL_UART_Transmit(&huart1, S19, 10, 1000);
 	  	  	 		  HAL_UART_Transmit(&huart1, SB, 2, 1000);
@@ -140,9 +140,9 @@ int main(void)
 	  	  	 	 	 	 	  	 }
 	  if((rx_buff[0]=='S')&(rx_buff[1]=='S')&(rx_buff[2]=='M')&(rx_buff[3]=='S')&(rx_buff[4]=='N')&(rx_buff[5]=='D')&(rx_buff[6]=='T')&(rx_buff[7]=='R')&(rx_buff[8]=='G')){
 		  HAL_Delay(delay);
-		  HAL_GPIO_WritePin(STP_GPIO_Port,STP_Pin, GPIO_PIN_SET);
-		  HAL_Delay(stp);
 		  HAL_GPIO_WritePin(STP_GPIO_Port,STP_Pin, GPIO_PIN_RESET);
+		  HAL_Delay(stp);
+		  HAL_GPIO_WritePin(STP_GPIO_Port,STP_Pin, GPIO_PIN_SET);
 
 	 	  	  	 		  HAL_UART_Transmit(&huart1, S1, 7, 1000);
 	 	  	  	 	      HAL_UART_Transmit(&huart1, SB, 2, 1000);
